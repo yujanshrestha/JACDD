@@ -10,6 +10,7 @@ It does this through iterative boundary interviews and constraint updates.
 - Unified source ("what gets compiled down"): [docs/jacdd-source.md](/Users/yshrestha/work/jacdd/docs/jacdd-source.md)
 - Structured reference: [docs/jacdd-reference.md](/Users/yshrestha/work/jacdd/docs/jacdd-reference.md)
 - Raw extraction from diagrams: [docs/raw-braindump-extraction.md](/Users/yshrestha/work/jacdd/docs/raw-braindump-extraction.md)
+- Reusable LAPC compression prompt: [docs/lapc-compression-prompt.md](/Users/yshrestha/work/jacdd/docs/lapc-compression-prompt.md)
 - Compressed artifacts:
   - [docs/jacdd-reference-lapc.md](/Users/yshrestha/work/jacdd/docs/jacdd-reference-lapc.md)
   - [docs/jacdd-gpt-5.3-codex.md](/Users/yshrestha/work/jacdd/docs/jacdd-gpt-5.3-codex.md)
