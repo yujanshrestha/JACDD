@@ -32,7 +32,7 @@ Do this once at project start:
 2. Inventory current codebase/WIP and recent git history.
 3. Estimate initial alignment band (`CRITICAL/LOW/MODERATE/GOOD/HIGH`).
 4. Ask 3-5 boundary questions (one at a time).
-5. Convert answers into 2-4 constraints (prefer deltas).
+5. Convert answers into 2-4 actionable constraints with highest expected Dice impact.
 6. Have stakeholder accept/modify/reject each constraint.
 7. Update `jacdd-state.md` and `jacdd-personality.md`.
 
@@ -46,14 +46,19 @@ Each iteration:
 4. Record decisions and never re-suggest rejected constraints without new evidence.
 5. Continue until `HIGH` alignment or explicit "good enough."
 
-### 4) Write Constraints as Deltas (When Possible)
+### 4) Write Constraints as Actionable Dice Levers
+Prefer constraints that change likely implementation behavior and close the largest divergences.
+Use as few constraints as possible to maximize Dice gain per constraint.
+
 Prefer:
-- "Reduce p95 API latency by 30% from current baseline"
+- "Windowing controls must remain operable during scroll"
+- "Multi-monitor layout is out of scope for launch"
 
 Over:
-- "API latency must be below X" (unless absolute threshold is truly required)
+- broad or redundant constraints that do not change team decisions
+- large bundles of low-impact constraints that overconstrain delivery
 
-Delta constraints usually compose better with existing systems and reduce cognitive load.
+If a delta or an absolute form is more actionable for a specific divergence, use that form.
 
 ### 5) Keep Commits Legible to the Judge
 JACDD treats git history as team-thinking evidence.
@@ -93,7 +98,7 @@ to prevent source leakage during evaluation.
 - [ ] Team understands five alignment bands.
 - [ ] Iteration loop is running and persisted.
 - [ ] Boundary interviews are concrete and decision-boundary focused.
-- [ ] Constraints are ranked by alignment impact.
+- [ ] Constraints are actionable, sparse, and ranked by expected Dice impact.
 - [ ] Rejected constraints are tracked and not re-proposed blindly.
 - [ ] `jacdd-personality.md` is updated every iteration.
 - [ ] Commits are intention-structured for history-based inference.

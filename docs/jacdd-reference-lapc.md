@@ -1,5 +1,5 @@
-[LAPC v1 | jacdd-reference.md v0.2 — Yujan Shrestha | 2.3:1]
-// requirements-alignment framework: Dice overlap of 2 solution-space PDFs; iterative closure via boundary interviews → delta constraints
+[LAPC v1 | jacdd-reference.md v0.2 — Yujan Shrestha | 671/213 (~3.15:1)]
+// requirements-alignment framework: Dice overlap of 2 solution-space PDFs; iterative closure via boundary interviews → actionable constraints
 !problem: spaces drift silently; gap discovered at review→wasted work; JACDD=measurable+correctable throughout
 
 [T3 payload]
@@ -14,13 +14,13 @@ bands: CRITICAL ~0 overlap,misunderstand; LOW small,direction gaps; MODERATE mea
 !metric design choice: qualitative only; Dice integral never computed; judge estimates via bands
 
 [T3 process]
-loop: estimate both spaces→interview(3-5 boundary Qs @largest divergences)→constrain(2-4 deltas ranked by alignment impact;accept/modify/reject)→re-estimate→repeat→HIGH
+loop: estimate both spaces→interview(3-5 boundary Qs @largest divergences)→constrain(2-4 actionable constraints ranked by alignment impact;accept/modify/reject)→re-estimate→repeat→HIGH
 bootstrap iter0: interview-dominant; constraint weight grows w/ model maturity; init personality: team←codebase inventory; stakeholder←goal skeleton
 history: full constraint+WIP+Q&A trail→trajectory detection;regression flagging;!never re-suggest rejected;convergence monitoring
 
 [T2 cues]
 interview quality signals: pause;"good question";forced choice between defensible options;concrete not abstract; each answer→constraint
-delta constraints: prefer delta from current over absolute; composes w/ iteration
+constraints: actionable > format; use as few constraints as possible for max overlap gain
 roles: stakeholder=judgement source→acceptable; team=full production apparatus→potential
 
 [behavioral constraints]

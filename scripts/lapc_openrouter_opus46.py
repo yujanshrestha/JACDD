@@ -240,6 +240,7 @@ Required output shape:
 3) Use compact LAPC syntax where useful (! ? -> ; w/ w/o etc).
 4) Add ? prefix for ambiguous/high-drift cues.
 5) Keep concrete Tier-3 facts and behavior constraints faithful.
+6) Constraints should be actionable and sparse; maximize Dice gain with as few constraints as possible.
 
 Now compress this source:
 {source_text}

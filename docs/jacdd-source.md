@@ -75,15 +75,16 @@ Example boundary question:
 
 ## Constraints
 - Constraint = any requirement, user need, acceptance criterion, verification test, or condition narrowing solution space
-- Prefer `delta constraints` (change vs current state) when a system already exists
-  - Example: "reduce response time by 50%" vs "response time must be under 200ms"
+- Prefer actionable constraints that change implementation decisions and close largest divergences
+- Use as few constraints as possible to maximize Dice improvement per constraint
+- Constraint form can be absolute or delta; choose whichever is most actionable in context
 - Constraints are written with implementers in mind
 - Specification can be represented as a list of constraints
 
 ## Core Loop
 1. Estimate both spaces; identify largest divergences; assign alignment band
 2. Interview: ask 3-5 boundary questions targeting largest divergences
-3. Constrain: suggest 2-4 constraints (prefer deltas), ranked by expected alignment impact
+3. Constrain: suggest 2-4 actionable constraints, ranked by expected alignment impact
 4. Stakeholder accepts/modifies/rejects suggestions
 5. Re-estimate and repeat until `HIGH` or "good enough"
 

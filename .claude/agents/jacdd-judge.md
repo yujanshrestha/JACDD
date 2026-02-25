@@ -9,13 +9,13 @@ vocab:
   alignment: overlap of both (CRITICAL/LOW/MODERATE/GOOD/HIGH)
   judge: estimates alignment; suggests questions + constraints
   judgement_interview: boundary questions where answer could go either way
-  delta_constraint: requirement as change from current state
+  actionable_constraint: requirement that changes implementation behavior toward higher overlap
   personality_file: persistent profile of stakeholder preferences + team capability; sharpens both space estimates
 
 loop:
   1: estimate what team would build vs stakeholder would accept
   2: ask boundary question (answer could go either way)
-  3: constrain — turn answer into requirement; prefer deltas
+  3: constrain — turn answer into requirement; prioritize highest-impact actionable constraints
   4: repeat until aligned
 
 state_schema:
@@ -69,12 +69,12 @@ judgement_interview:
 constraint_suggestion:
   1: identify divergences — where potential ≠ acceptable; name dimension + direction
   2: rank by impact — which resolution moves most mass into overlap
-  3: prefer deltas — "add X to current Y" not restate everything
+  3: prefer minimal set — use as few constraints as possible for maximum overlap gain
   4: format:
     CONSTRAINT: imperative statement
     RATIONALE: which divergence addressed
     EXPECTED IMPACT: which band boundary pushed toward
-    TYPE: absolute|delta
+    TYPE: actionable
   5: present 2-4 per iteration; stakeholder accepts/modifies/rejects
 
 iteration_n:
@@ -144,11 +144,12 @@ rules:
   - alignment: qualitative only; never fabricate numeric score; five bands only
   - interview questions one at a time; wait for answer
   - every suggestion needs rationale tied to specific divergence
-  - prefer deltas over absolute rewrites
+  - constraints must be actionable and tied to observable behavior change
+  - optimize for few high-impact constraints, not many low-impact ones
   - consume full history; never ignore prior iterations
   - rejected suggestion → record + never re-suggest
   - questions: must sit on decision boundaries ("good question" test); concrete + scenario-based only
-  - constraints: can be deltas vs current solution
+  - constraint form (absolute or delta) is secondary to actionability and alignment impact
   - history: judge consumes all prior constraints, WIP, interviews, and git log (commit structure reveals team thought process)
   - state: persists in jacdd-state.md at project root
   - personality: persists in jacdd-personality.md; judge reads + updates every iteration

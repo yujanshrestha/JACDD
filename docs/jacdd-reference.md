@@ -29,10 +29,11 @@ concepts:
     example: "Search returns results in 50ms but occasionally shows stale data (up to 30s). Acceptable?" → forces latency-vs-freshness reveal
     output: each answer becomes constraint narrowing gap
 
-  delta_constraints:
-    desc: requirements as changes relative to current state
-    why: composes with iteration; reduces cognitive burden
-    example: "reduce response time by 50%" > "response time must be under 200ms" when system exists
+  constraint_strategy:
+    desc: constraints should be actionable and chosen for maximum alignment impact
+    objective: maximize Dice improvement with as few constraints as possible
+    form_note: use absolute or delta form based on which is more actionable for the divergence
+    example: "Windowing controls operable during scroll" or "reduce frame latency by 30% from current baseline"
 
   personality_file:
     desc: persistent profile sharpening both space estimates
@@ -50,7 +51,7 @@ concepts:
 loop:
   1_estimate: model both spaces; identify divergences; estimate alignment band
   2_interview: 3-5 boundary questions targeting largest divergences; each reveals unwritten preference
-  3_constrain: suggest 2-4 constraints (prefer deltas) ranked by alignment impact; stakeholder accepts/modifies/rejects
+  3_constrain: suggest 2-4 actionable constraints ranked by alignment impact; stakeholder accepts/modifies/rejects
   4_repeat: update constraints; re-estimate; continue until HIGH or "good enough"
 
 bootstrap:
@@ -80,7 +81,7 @@ example:
       - q: "Multi-monitor layouts at launch?"
         a: "Not at launch. Good question — matters eventually."
     constraints:
-      - "Windowing controls operable during scroll (delta: add inline controls)"
+      - "Windowing controls operable during scroll"
       - "Frame-to-frame latency ≤200ms"
       - "Multi-monitor deferred (explicit out-of-scope)"
   iteration_1:
