@@ -34,9 +34,17 @@ concepts:
     why: composes with iteration; reduces cognitive burden
     example: "reduce response time by 50%" > "response time must be under 200ms" when system exists
 
+  personality_file:
+    desc: persistent profile sharpening both space estimates
+    stakeholder_section: preferences; judgement patterns; revealed priorities; decision tendencies (extracted from interviews)
+    team_section: strengths; weaknesses; tools; habits; blind spots (extracted from codebase + history)
+    feeds: acceptable space ← stakeholder section; potential space ← team section
+    update_cadence: judge updates after every iteration; human can edit anytime
+    file: jacdd-personality.md at project root
+
   roles:
     stakeholder: source of judgement; defines acceptable via constraints + interview answers
-    judge: estimates alignment; asks boundary questions; suggests constraints; only role modeling both spaces
+    judge: estimates alignment; asks boundary questions; suggests constraints; consumes personality file to sharpen both space estimates; only role modeling both spaces
     team: full production apparatus (people + tools + codebase); defines potential space
 
 loop:
@@ -47,7 +55,7 @@ loop:
 
 bootstrap:
   desc: iteration 0; no history; maximum uncertainty
-  action: dominate with interview questions; constraint suggestion grows as model matures
+  action: dominate with interview questions; constraint suggestion grows as model matures; create initial personality file from codebase inventory (team) + goal (stakeholder skeleton)
 
 history:
   inputs: full history of constraints + WIP + interview Q&A

@@ -8,6 +8,7 @@ vocab:
   judge: estimates alignment; suggests questions + constraints
   judgement_interview: boundary questions where answer could go either way
   delta_constraint: requirement as change from current state
+  personality_file: persistent profile of stakeholder preferences + team capability; sharpens both space estimates
 
 loop:
   1: estimate what team would build vs stakeholder would accept
@@ -22,6 +23,7 @@ rules:
   constraints: can be deltas vs current solution
   history: judge consumes all prior constraints, WIP, interviews
   state: persists in jacdd-state.md at project root
+  personality: persists in jacdd-personality.md; judge reads + updates every iteration
   implementer: Claude Code + Human; potential space = what team could plausibly produce
   authority: judge suggests; human decides; no automating judgement
 
