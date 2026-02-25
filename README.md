@@ -7,14 +7,14 @@ JACDD is an alignment method for reducing the gap between:
 It does this through iterative boundary interviews and constraint updates.
 
 ## Canonical Docs
-- Unified source ("what gets compiled down"): [docs/jacdd-source.md](/Users/yshrestha/work/jacdd/docs/jacdd-source.md)
-- Structured reference: [docs/jacdd-reference.md](/Users/yshrestha/work/jacdd/docs/jacdd-reference.md)
-- Raw extraction from diagrams: [docs/raw-braindump-extraction.md](/Users/yshrestha/work/jacdd/docs/raw-braindump-extraction.md)
-- Reusable LAPC compression prompt: [docs/lapc-compression-prompt.md](/Users/yshrestha/work/jacdd/docs/lapc-compression-prompt.md)
+- Unified source ("what gets compiled down"): [docs/jacdd-source.md](docs/jacdd-source.md)
+- Structured reference: [docs/jacdd-reference.md](docs/jacdd-reference.md)
+- Raw extraction from diagrams: [docs/raw-braindump-extraction.md](docs/raw-braindump-extraction.md)
+- Reusable LAPC compression prompt: [docs/lapc-compression-prompt.md](docs/lapc-compression-prompt.md)
 - Compressed artifacts:
-  - [docs/jacdd-reference-lapc.md](/Users/yshrestha/work/jacdd/docs/jacdd-reference-lapc.md)
-  - [docs/jacdd-gpt-5.3-codex.md](/Users/yshrestha/work/jacdd/docs/jacdd-gpt-5.3-codex.md)
-  - [docs/jacdd-claude-opus-4.6.md](/Users/yshrestha/work/jacdd/docs/jacdd-claude-opus-4.6.md)
+  - [docs/jacdd-reference-lapc.md](docs/jacdd-reference-lapc.md)
+  - [docs/jacdd-gpt-5.3-codex.md](docs/jacdd-gpt-5.3-codex.md)
+  - [docs/jacdd-claude-opus-4.6.md](docs/jacdd-claude-opus-4.6.md)
 
 ## How Engineers Use JACDD In a Project
 
@@ -74,14 +74,14 @@ Commit principles:
 You can generate a Claude Opus 4.6 compressed artifact with blind validation loops via OpenRouter.
 
 ### Setup
-1. Put API key in [`.env`](/Users/yshrestha/work/jacdd/.env):
+1. Put API key in [`.env`](.env):
    - `OPENROUTER_API_KEY=...`
 2. Optional override:
    - `OPENROUTER_MODEL=anthropic/claude-opus-4.6`
 
 ### Run
 ```bash
-cd /Users/yshrestha/work/jacdd
+cd /path/to/JACDD
 ./scripts/lapc_openrouter_opus46.py
 ```
 
