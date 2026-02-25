@@ -1,0 +1,54 @@
+{
+  "model": "anthropic/claude-opus-4.6",
+  "source": [
+    "docs/jacdd-reference.md",
+    "docs/raw-braindump-extraction.md"
+  ],
+  "output": "docs/jacdd-claude-opus-4.6.md",
+  "rounds": [
+    {
+      "round": 1,
+      "oracle": {
+        "answers": {
+          "q1": "JACDD uses the Dice coefficient. Its formal definition is Dice(f,g) = ∫ min(f(x),g(x)) dx, where f and g are the probability density functions of the acceptable and potential solution spaces respectively. It is symmetric, bounded 0–1, and measures overlap rather than distance.",
+          "q2": "Misalignment = 1 − Dice score. If the Dice score is 0.3, misalignment is 0.7. A Dice score of 0.3 falls into the LOW alignment band, indicating small overlap with major direction gaps between the acceptable and potential solution spaces.",
+          "q3": "Real-world solution spaces are fuzzy, graded, and uncertain—not binary checklists. Modeling them as PDFs captures this continuous uncertainty and gradation. A sticky note in the braindump explicitly states \"These are probability density functions,\" reflecting that acceptability and producibility are distributions, not discrete sets.",
+          "q4": "Good signals: the stakeholder pauses (not obvious), says \"good question\" (surfaced latent tradeoff), is forced to choose between two defensible options, and the question is concrete/scenario-based rather than abstract. The 50ms-stale-data example qualifies because it forces a concrete latency-vs-freshness tradeoff right on a decision boundary.",
+          "q5": "Delta constraints express requirements as changes relative to the current state (e.g., \"reduce response time by 50%\" instead of an absolute target). JACDD prefers them when a system exists because they compose naturally with iteration and reduce cognitive burden, aligning with iterative development's incremental nature.",
+          "q6": "The personality file (jacdd-personality.md at project root) has two sections: a stakeholder section (preferences, judgement patterns, revealed priorities, decision tendencies from interviews) and a team section (strengths, weaknesses, tools, habits, blind spots from codebase/history). The judge consumes both sections to sharpen estimates of the acceptable and potential spaces.",
+          "q7": "At iteration 0 with maximum uncertainty and no history, the judge should dominate with interview questions; constraint suggestions grow as the model matures. Initial actions: create the personality file from a codebase inventory (team section) and the stated goal (stakeholder skeleton section).",
+          "q8": "The three roles are: (1) Stakeholder — defines the acceptable solution space via constraints and interview answers; (2) Team — the full production apparatus defining the potential solution space; (3) Judge — estimates alignment, asks boundary questions, suggests constraints, and is the only role modeling both spaces simultaneously.",
+          "q9": "The judge examines git history for signals: commit granularity (chunking style), message framing (priorities), co-location vs. separation (conceptual grouping), and sequencing (dependency thinking). These feed the team section of the personality file, refining the potential space model. The principle: commit with intention, as if the judge will read it to learn how you think.",
+          "q10": "JACDD is explicitly NOT: (1) project management (no sprints/velocity), (2) a replacement for BDD/Agile/delivery frameworks, (3) automating judgement—it amplifies it, (4) a specification language. Adopting JACDD does not replace Scrum because JACDD is an alignment layer only, designed to pair with a delivery process like Scrum."
+        }
+      },
+      "evaluator": {
+        "answers": {
+          "q1": "JACDD uses the Sørensen-Dice coefficient. Its formal definition for two probability density functions f (acceptable) and g (potential) is: Dice(f, g) = ∫ min(f(x), g(x)) dx. It is symmetric, bounded 0–1, and measures overlap rather than distance between the two spaces.",
+          "q2": "Misalignment = 1 − Dice(potential, acceptable). If the Dice score is 0.3, misalignment is 0.7. The five alignment bands are CRITICAL, LOW, MODERATE, GOOD, HIGH. A Dice of 0.3 (high misalignment) falls into the LOW alignment band.",
+          "q3": "Real-world solution spaces are fuzzy, graded, and uncertain—not binary. PDFs capture that some solutions are more likely or preferred than others with varying degrees of confidence. Discrete sets or checklists cannot represent this continuous, probabilistic nature of stakeholder preferences and team capabilities.",
+          "q4": "Good questions: stakeholder pauses, says 'good question,' forces choice between defensible options, and are concrete/scenario-based (not abstract). The 50ms-stale-data example qualifies because it forces a latency-vs-freshness tradeoff reveal—a genuine boundary where preference could go either way, narrowing the acceptable space.",
+          "q5": "Delta constraints express requirements as changes relative to current state (e.g., 'reduce response time by 50%'). JACDD prefers them over absolute constraints when a system exists because they reduce cognitive burden and compose naturally with iterative development—each iteration builds on the previous state rather than re-specifying from scratch.",
+          "q6": "The personality file (jacdd-personality.md at project root) has two sections: (1) Stakeholder section—fed by interviews (preferences, judgement patterns, revealed priorities, decision tendencies)—sharpens acceptable space estimates. (2) Team section—fed by codebase and git history (strengths, weaknesses, tools, habits, blind spots)—sharpens potential space estimates. Updated by judge every iteration; human-editable anytime.",
+          "q7": "At iteration 0 with maximum uncertainty and no history, the judge should dominate with interview questions (boundary questions) over constraint suggestions, since the model is immature. Initial actions: create the personality file from a codebase inventory (team section) and a stakeholder goal skeleton (stakeholder section). Constraint suggestions grow as the model matures.",
+          "q8": "Three roles: (1) Stakeholder—defines the acceptable solution space. (2) Team/Implementer—defines the potential solution space. (3) Judge—estimates alignment, asks boundary questions, suggests constraints. The Judge is unique in modeling both spaces simultaneously, sitting between stakeholder (acceptability) and implementer (possibility).",
+          "q9": "The judge examines git history for: commit granularity (chunking style), message framing (priorities), co-location vs. separation of changes (conceptual grouping), and sequencing (dependency thinking). These signals feed the team section of the personality file, refining the potential space estimate. The guiding principle: teams should 'commit with intention.'",
+          "q10": "JACDD is explicitly NOT: (1) project management, (2) BDD replacement, (3) Agile replacement, (4) automation of judgement—it amplifies judgement. Adopting JACDD does not replace Scrum. JACDD is an alignment layer only; it pairs with any delivery process. Scrum handles delivery; JACDD handles alignment measurement and correction."
+        }
+      },
+      "score": {
+        "pass": true,
+        "score_0_100": 97,
+        "failures": [
+          {
+            "id": "q10",
+            "severity": "low",
+            "reason": "Oracle lists four items JACDD is NOT: project management, replacement for BDD/Agile/delivery frameworks, automating judgement, and a specification language. Evaluator omits 'specification language' and instead splits BDD and Agile into separate items. While the evaluator lists four items, one oracle item (specification language) is missing.",
+            "minimal_fix": "Add 'not a specification language' to the list of things JACDD is not."
+          }
+        ],
+        "summary": "The evaluator's answers are highly aligned with the oracle across all ten questions. Terminology, formal definitions, structural details, and reasoning match closely. The only minor gap is the omission of 'specification language' in q10, which is low severity since the evaluator still lists four items and the core point is preserved."
+      }
+    }
+  ]
+}
