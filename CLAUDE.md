@@ -1,48 +1,29 @@
-# JACDD — Judgement-Aligned Constraint-Driven Development
+name: JACDD
+desc: Measure overlap(team_would_build, stakeholder_would_accept); close gap via boundary questions → constraints
 
-A framework that measures the overlap between what *should* be built and what *could* be built, then drives that overlap toward 1 through targeted constraints.
+vocab:
+  acceptable_space: what stakeholder would accept
+  potential_space: what team would likely build
+  alignment: overlap of both (CRITICAL/LOW/MODERATE/GOOD/HIGH)
+  judge: estimates alignment; suggests questions + constraints
+  judgement_interview: boundary questions where answer could go either way
+  delta_constraint: requirement as change from current state
 
-## Vocabulary
+loop:
+  1: estimate what team would build vs stakeholder would accept
+  2: ask boundary question (answer could go either way)
+  3: constrain — turn answer into requirement; prefer deltas
+  4: repeat until aligned
 
-| Term | Definition |
-|---|---|
-| Solution Space | Region where 95% of plausible solutions lie (a probability density, not a list) |
-| Acceptable Space | Solutions the Human would accept — inferred from constraints + judgement |
-| Potential Space | Solutions the Implementer could produce — simulated from capability + WIP |
-| Constraint | Anything that narrows a solution space (requirement, test, decision, delta) |
-| Specification | A list of constraints at a given iteration |
-| Dice Score | Overlap metric between potential and acceptable spaces (0 = none, 1 = perfect) |
-| Scope Alignment | Dice(potential, acceptable) — the central metric |
-| Misalignment | 1 − Scope Alignment — the gap JACDD works to close |
-| Judgement Interview | Targeted questions on decision boundaries to calibrate acceptability |
-| JACDD Judge | The engine that estimates alignment and suggests constraints |
+rules:
+  invoke: `/agent:jacdd-judge` or "start JACDD"
+  alignment: qualitative only; never fabricate numeric scores
+  questions: must sit on decision boundaries ("good question" test)
+  constraints: can be deltas vs current solution
+  history: judge consumes all prior constraints, WIP, interviews
+  state: persists in jacdd-state.md at project root
+  implementer: Claude Code + Human; potential space = what team could plausibly produce
+  authority: judge suggests; human decides; no automating judgement
 
-## The Loop
-
-1. Human states a goal and provides initial constraints.
-2. Judge inventories the codebase and current WIP.
-3. Judge infers the acceptable space from constraints + judgement data.
-4. Judge simulates the potential space from Implementer capability + WIP.
-5. Judge estimates the Dice score (qualitative band: CRITICAL / LOW / MODERATE / GOOD / HIGH).
-6. Judge runs a Judgement Interview — 3-5 boundary questions per round.
-7. Judge suggests 2-4 constraints ranked by expected Dice impact (prefer deltas).
-8. Human accepts, modifies, or rejects. Constraints update. Repeat from step 3.
-
-## Rules
-
-1. Use `/agent:jacdd-judge` or say "start JACDD" to begin a session.
-2. The Judge estimates alignment qualitatively — never fabricate numeric scores.
-3. Interview questions must sit on decision boundaries ("good question" test).
-4. Constraints can be deltas vs. current solution, not only absolutes.
-5. History matters — the Judge consumes all prior constraints, WIP, and interviews.
-6. State persists in `jacdd-state.md` at project root for cross-session continuity.
-7. The Implementer = Claude Code + the Human. Potential space = what this team could plausibly produce.
-8. The Judge suggests; the Human decides. Judgement is never automated away.
-
-## Invocation
-
-Run a full JACDD session: `/agent:jacdd-judge`
-
-## Reference
-
-Full theory and formal definitions: `docs/jacdd-reference.md`
+ref: docs/jacdd-reference.md
+source: docs/raw-braindump-extraction.md
