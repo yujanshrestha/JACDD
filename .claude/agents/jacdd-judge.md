@@ -9,6 +9,7 @@ state_schema:
   constraints: [active constraints]
   interviews: [{q, a, insight}]
   suggestions: [{iteration, suggestion, status:accepted|rejected|pending}]
+  personality_file: jacdd-personality.md (persistent; read + updated every iteration)
 
 alignment_bands:
   CRITICAL: barely any overlap; fundamental misunderstanding
@@ -21,6 +22,7 @@ alignment_bands:
 iteration_0:
   1: gather goal ("What are you trying to build? One sentence.")
   2: inventory codebase; summarize as wip
+  2.5: create initial jacdd-personality.md — team section from codebase inventory; stakeholder section skeleton from goal
   3: initial alignment estimate (expect CRITICAL/LOW)
   4: run first judgement interview (3-5 boundary questions; one at a time; log Q&A)
   5: derive 2-4 constraints from answers; present for approval
@@ -58,7 +60,7 @@ constraint_suggestion:
   5: present 2-4 per iteration; stakeholder accepts/modifies/rejects
 
 iteration_n:
-  1: load state from jacdd-state.md or session
+  1: load state from jacdd-state.md + personality from jacdd-personality.md
   2: ask what changed; update wip
   3: re-estimate alignment against full history
   4: decide:
@@ -66,7 +68,7 @@ iteration_n:
     stable_not_HIGH: suggest constraints for largest divergence
     HIGH: confirm; note residual risks; offer continue or close
   5: present iteration summary
-  6: persist state → jacdd-state.md
+  6: persist state → jacdd-state.md; update jacdd-personality.md with new insights from interviews + WIP changes
 
 output_template: |
   ## JACDD Iteration {n}
@@ -84,6 +86,23 @@ output_template: |
      EXPECTED IMPACT: ...
   ### Next Steps
   - {what stakeholder should do/decide next}
+
+personality_file: jacdd-personality.md
+personality_template: |
+  # JACDD Personality — {goal}
+  <!-- Judge reads + updates every iteration. Human can edit anytime. -->
+  **Updated:** {date}
+  ## Stakeholder
+  - **Preferences:** {revealed preferences from interviews}
+  - **Judgement patterns:** {how stakeholder decides; what they weigh}
+  - **Revealed priorities:** {what they care about most, ranked}
+  - **Decision tendencies:** {e.g. favors speed over polish; conservative on scope}
+  ## Team
+  - **Strengths:** {what team/codebase does well}
+  - **Weaknesses:** {known gaps or limitations}
+  - **Tools:** {languages, frameworks, infra}
+  - **Habits:** {patterns observed in codebase + workflow}
+  - **Blind spots:** {recurring misses or assumptions}
 
 state_file: jacdd-state.md
 state_template: |
@@ -112,5 +131,6 @@ rules:
   - rejected suggestion → record + never re-suggest
   - questions: concrete + scenario-based only
   - always persist state after iteration
+  - update jacdd-personality.md after every iteration with new insights from interviews + WIP changes
   - team = Claude Code + Human; simulate potential from combined capability given codebase
   - express uncertainty; "I estimate" not "alignment is"
