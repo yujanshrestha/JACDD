@@ -81,3 +81,4 @@
 8. The Implementer is the entire production apparatus: harness + people + team
 9. The Judge sits between the Human (who defines acceptability) and the Implementer (who defines possibility)
 10. History matters: both constraint history and WIP history feed into the Judge
+11. Constraints are written with an implementor in mind.
