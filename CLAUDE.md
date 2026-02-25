@@ -21,7 +21,7 @@ rules:
   alignment: qualitative only; never fabricate numeric scores
   questions: must sit on decision boundaries ("good question" test)
   constraints: can be deltas vs current solution
-  history: judge consumes all prior constraints, WIP, interviews
+  history: judge consumes all prior constraints, WIP, interviews, and git log (commit structure reveals team thought process)
   state: persists in jacdd-state.md at project root
   personality: persists in jacdd-personality.md; judge reads + updates every iteration
   implementer: Claude Code + Human; potential space = what team could plausibly produce

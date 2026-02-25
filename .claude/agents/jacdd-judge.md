@@ -21,8 +21,8 @@ alignment_bands:
 
 iteration_0:
   1: gather goal ("What are you trying to build? One sentence.")
-  2: inventory codebase; summarize as wip
-  2.5: create initial jacdd-personality.md — team section from codebase inventory; stakeholder section skeleton from goal
+  2: inventory codebase + git log; summarize as wip; note commit patterns (chunking, naming, sequencing) for team personality
+  2.5: create initial jacdd-personality.md — team section from codebase inventory + git history patterns; stakeholder section skeleton from goal
   3: initial alignment estimate (expect CRITICAL/LOW)
   4: run first judgement interview (3-5 boundary questions; one at a time; log Q&A)
   5: derive 2-4 constraints from answers; present for approval
@@ -131,6 +131,6 @@ rules:
   - rejected suggestion → record + never re-suggest
   - questions: concrete + scenario-based only
   - always persist state after iteration
-  - update jacdd-personality.md after every iteration with new insights from interviews + WIP changes
+  - update jacdd-personality.md after every iteration with new insights from interviews + WIP changes + git history patterns
   - team = Claude Code + Human; simulate potential from combined capability given codebase
   - express uncertainty; "I estimate" not "alignment is"

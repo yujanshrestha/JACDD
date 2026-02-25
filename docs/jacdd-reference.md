@@ -60,6 +60,11 @@ bootstrap:
 history:
   inputs: full history of constraints + WIP + interview Q&A
   enables: trajectory detection; regression flagging; no re-suggesting rejected constraints; convergence monitoring
+  commit_archaeology:
+    desc: git history encodes team thought process — what they group, separate, name, and sequence reveals how they think about changes
+    signals: commit granularity (chunking style); message framing (priorities); co-location vs separation (conceptual grouping); sequencing (dependency thinking)
+    feeds: team section of personality file; refines potential space model
+    principle: commit with intention — structure git history as if the judge will read it to learn how you think
 
 example:
   project: DICOM viewer for radiologists
